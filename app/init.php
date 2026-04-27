@@ -113,7 +113,7 @@ $panel->execute(array("id"=>1));
 $panel = $panel->fetch(PDO::FETCH_ASSOC);
 define('THEME', $settings["site_theme"]);
 
-$loader   = new Twig_Loader_Filesystem(__DIR__.'/views/'.THEME);
+$loader   = new Twig_Loader_Filesystem(__DIR__.'/../app/views/'.THEME);
 $twig     = new Twig_Environment($loader, ['autoescape' => false]);
 
 function is_user_currency_enable($currency_code){

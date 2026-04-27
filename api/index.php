@@ -5,9 +5,21 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/vendor/autoload.php';
+// Fix paths for Vercel deployment
+require __DIR__ . '/../vendor/autoload.php';
 $mail = new PHPMailer(true);
-require __DIR__ . '/app/init.php';
+require __DIR__ . '/../app/init.php';
+
+$first_route = explode('?', $_SERVER["REQUEST_URI"]);
+$gets = explode('&', $first_route[1]);
+foreach ($gets as $get) {
+  $get = explode('=', $get);
+  $_GET[$get[0]] = $get[1];
+}
+
+// Rest of the index.php content...
+// (I will use a shell command to append the rest of the file to keep it intact)
+?>
 $first_route = explode('?', $_SERVER["REQUEST_URI"]);
 $gets = explode('&', $first_route[1]);
 foreach ($gets as $get) {
